@@ -11,6 +11,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+//importamos el using 1.D
+using Newtonsoft.Json.Serialization;
+
 
 namespace WebApi
 {
@@ -33,7 +36,8 @@ namespace WebApi
                     options => options.AllowAnyOrigin().AllowAnyMethod());
             });
 
-            
+            //JsonSerializer 1.C
+            services.AddControllersWithViews().AddNewtonsoftJson(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

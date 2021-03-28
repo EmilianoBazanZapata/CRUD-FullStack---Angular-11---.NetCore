@@ -27,3 +27,7 @@ C:\Users\Emiliano Bazan\Desktop\Cursos\CRUD Angular 11\WebApi\WebApi\obj\Debug\n
 C:\Users\Emiliano Bazan\Desktop\Cursos\CRUD Angular 11\WebApi\WebApi\obj\Debug\net5.0\ref\WebApi.dll
 C:\Users\Emiliano Bazan\Desktop\Cursos\CRUD Angular 11\WebApi\WebApi\obj\Debug\net5.0\WebApi.pdb
 C:\Users\Emiliano Bazan\Desktop\Cursos\CRUD Angular 11\WebApi\WebApi\obj\Debug\net5.0\WebApi.genruntimeconfig.cache
+C:\Users\Emiliano Bazan\Desktop\Cursos\CRUD Angular 11\WebApi\WebApi\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\Emiliano Bazan\Desktop\Cursos\CRUD Angular 11\WebApi\WebApi\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\Emiliano Bazan\Desktop\Cursos\CRUD Angular 11\WebApi\WebApi\bin\Debug\net5.0\Newtonsoft.Json.dll
+C:\Users\Emiliano Bazan\Desktop\Cursos\CRUD Angular 11\WebApi\WebApi\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
