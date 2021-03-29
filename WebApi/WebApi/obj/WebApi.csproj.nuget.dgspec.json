@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Emiliano Bazan\\Desktop\\Cursos\\CRUD Angular 11\\WebApi\\WebApi\\WebApi.csproj": {}
+    "C:\\Users\\maxim\\Desktop\\Cursos\\Crud Angular 11\\CRUD Angular 11\\WebApi\\WebApi\\WebApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Emiliano Bazan\\Desktop\\Cursos\\CRUD Angular 11\\WebApi\\WebApi\\WebApi.csproj": {
+    "C:\\Users\\maxim\\Desktop\\Cursos\\Crud Angular 11\\CRUD Angular 11\\WebApi\\WebApi\\WebApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Emiliano Bazan\\Desktop\\Cursos\\CRUD Angular 11\\WebApi\\WebApi\\WebApi.csproj",
+        "projectUniqueName": "C:\\Users\\maxim\\Desktop\\Cursos\\Crud Angular 11\\CRUD Angular 11\\WebApi\\WebApi\\WebApi.csproj",
         "projectName": "WebApi",
-        "projectPath": "C:\\Users\\Emiliano Bazan\\Desktop\\Cursos\\CRUD Angular 11\\WebApi\\WebApi\\WebApi.csproj",
-        "packagesPath": "C:\\Users\\Emiliano Bazan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Emiliano Bazan\\Desktop\\Cursos\\CRUD Angular 11\\WebApi\\WebApi\\obj\\",
+        "projectPath": "C:\\Users\\maxim\\Desktop\\Cursos\\Crud Angular 11\\CRUD Angular 11\\WebApi\\WebApi\\WebApi.csproj",
+        "packagesPath": "C:\\Users\\maxim\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\maxim\\Desktop\\Cursos\\Crud Angular 11\\CRUD Angular 11\\WebApi\\WebApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Emiliano Bazan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\maxim\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -71,7 +71,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.200\\RuntimeIdentifierGraph.json"
         }
       }
     }
