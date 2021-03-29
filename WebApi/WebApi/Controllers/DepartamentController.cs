@@ -18,14 +18,14 @@ namespace WebApi.Controllers
     {
         private readonly IConfiguration _configuration;
 
-        public DepartamentController(IConfiguration configuration) 
+        public DepartamentController(IConfiguration configuration)
         {
             _configuration = configuration;
         }
 
         [HttpGet]
         //metodo para seleccionar los departamentos
-        public JsonResult Get() 
+        public JsonResult Get()
         {
             //genero un string con la consulta hacia la BD
             string Consulta = @"SELECT DEPARTAMENT_ID,DEPARTAMENT_NAME FROM DEPARTAMENT";
@@ -37,11 +37,11 @@ namespace WebApi.Controllers
             string sqlDataSource = _configuration.GetConnectionString("EmployeeAppCon");
 
 
-            using (SqlConnection sqlcon = new SqlConnection(sqlDataSource)) 
+            using (SqlConnection sqlcon = new SqlConnection(sqlDataSource))
             {
 
                 sqlcon.Open();
-                using ( SqlCommand myCommand = new SqlCommand(Consulta, sqlcon)) 
+                using (SqlCommand myCommand = new SqlCommand(Consulta, sqlcon))
                 {
                     MyReader = myCommand.ExecuteReader();
                     //la tabla la cargo con los datos obtenidos de mi select 
@@ -55,7 +55,7 @@ namespace WebApi.Controllers
             return new JsonResult(tb);
         }
         [HttpPost]
-        public JsonResult Post(Departament dep ) 
+        public JsonResult Post(Departament dep)
         {
             //genero un string con la consulta hacia la BD
             string Consulta = @"INSERT INTO DEPARTAMENT VALUES(@DEPARTAMENTO)";
@@ -73,7 +73,7 @@ namespace WebApi.Controllers
                 sqlcon.Open();
                 using (SqlCommand myCommand = new SqlCommand(Consulta, sqlcon))
                 {
-                    myCommand.Parameters.AddWithValue("@DEPARTAMENTO", dep.Departament_Name); 
+                    myCommand.Parameters.AddWithValue("@DEPARTAMENTO", dep.Departament_Name);
                     MyReader = myCommand.ExecuteReader();
                     //la tabla la cargo con los datos obtenidos de mi sentencia
                     tb.Load(MyReader);
@@ -120,7 +120,7 @@ namespace WebApi.Controllers
             return new JsonResult("Updated Succesfully");
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public JsonResult Delete(Departament dep)
         {
             //genero un string con la consulta hacia la BD
