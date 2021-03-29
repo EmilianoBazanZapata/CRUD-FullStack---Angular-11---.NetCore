@@ -35,7 +35,8 @@ namespace WebApi.Controllers
         public JsonResult Get()
         {
             //genero un string con la consulta hacia la BD
-            string Consulta = @"SELECT EMPLOYEE_ID , EMPLOYEE_NAME  , DEPARTAMENT , DATE_OF_JOINING , PHOTO_FILE FROM EMPLOYEE";
+            string Consulta = @"SELECT EMPLOYEE_ID , EMPLOYEE_NAME  , 
+                                DEPARTAMENT , CONVERT(NVARCHAR(50),DATE_OF_JOINING,120) AS DATE_OF_JOINING , PHOTO_FILE FROM EMPLOYEE";
             //CREO UNA INSTANCIA NUEVA DE UN DATATABLE
             DataTable tb = new DataTable();
             //creo una variable reader para capturar los datos
@@ -166,5 +167,39 @@ namespace WebApi.Controllers
                 return new JsonResult("anonymous.png");
             }
         }
+
+        [Route("GetAllDepartamentsNames")]
+        [HttpGet]
+        public JsonResult GetAllDepartaments()
+        {
+            //genero un string con la consulta hacia la BD
+            string Consulta = @"SELECT DEPARTAMENT_NAME
+                                FROM DEPARTAMENT";
+            //CREO UNA INSTANCIA NUEVA DE UN DATATABLE
+            DataTable tb = new DataTable();
+            //creo una variable reader para capturar los datos
+            SqlDataReader MyReader;
+            //TOMO LA CADENA CONEXXION QUE SE UBICA EN APPSETINGS.JSON
+            string sqlDataSource = _configuration.GetConnectionString("EmployeeAppCon");
+
+
+            using (SqlConnection sqlcon = new SqlConnection(sqlDataSource))
+            {
+
+                sqlcon.Open();
+                using (SqlCommand myCommand = new SqlCommand(Consulta, sqlcon))
+                {
+                    MyReader = myCommand.ExecuteReader();
+                    //la tabla la cargo con los datos obtenidos de mi select 
+                    tb.Load(MyReader);
+                    //cierro las conexiones
+                    MyReader.Close();
+                    sqlcon.Close();
+                }
+            }
+            //cargo mi elemento json con el contenido de mi tb
+            return new JsonResult(tb);
+        }
+
     }
 }
