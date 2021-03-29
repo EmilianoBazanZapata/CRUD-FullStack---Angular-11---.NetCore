@@ -97,5 +97,44 @@ namespace WebApi.Controllers
             //cargo mi elemento json con el contenido de mi tb
             return new JsonResult("Added Succesfully");
         }
+        [HttpPut]
+        public JsonResult Put(Employee emp)
+        {
+            //genero un string con la consulta hacia la BD
+            string Consulta = @"UPDATE [dbo].[EMPLOYEE]
+                                   SET [EMPLOYEE_NAME] = @NOMBRE
+                                      ,[DEPARTAMENT] = @DEPARTAMENTO
+                                      ,[DATE_OF_JOINING] = @FECHADEINGRESO
+                                      ,[PHOTO_FILE] = @FOTO
+                                 WHERE [EMPLOYEE_ID] = @ID";
+            //CREO UNA INSTANCIA NUEVA DE UN DATATABLE
+            DataTable tb = new DataTable();
+            //creo una variable reader para capturar los datos
+            SqlDataReader MyReader;
+            //TOMO LA CADENA CONEXXION QUE SE UBICA EN APPSETINGS.JSON
+            string sqlDataSource = _configuration.GetConnectionString("EmployeeAppCon");
+
+            using (SqlConnection sqlcon = new SqlConnection(sqlDataSource))
+            {
+
+                sqlcon.Open();
+                using (SqlCommand myCommand = new SqlCommand(Consulta, sqlcon))
+                {
+                    myCommand.Parameters.AddWithValue("@NOMBRE", emp.Employee_Name);
+                    myCommand.Parameters.AddWithValue("@DEPARTAMENTO", emp.Departament);
+                    myCommand.Parameters.AddWithValue("@FECHADEINGRESO", emp.DateOfJoining);
+                    myCommand.Parameters.AddWithValue("@FOTO", emp.Photo_File_Name);
+                    myCommand.Parameters.AddWithValue("@ID", emp.EmployeeId);
+                    MyReader = myCommand.ExecuteReader();
+                    //la tabla la cargo con los datos obtenidos de mi sentencia
+                    tb.Load(MyReader);
+                    //cierro las conexiones
+                    MyReader.Close();
+                    sqlcon.Close();
+                }
+            }
+            //cargo mi elemento json con el contenido de mi tb
+            return new JsonResult("Updated Succesfully");
+        }
     }
 }
