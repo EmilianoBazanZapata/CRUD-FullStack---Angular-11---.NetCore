@@ -10,6 +10,7 @@ namespace WebApi.Models
         public int EmployeeId { get; set; }
         public string Employee_Name { get; set; }
         public string DateOfJoining { get; set; }
+        public string Departament { get; set; }
         public string Photo_File_Name { get; set; }
     }
 }

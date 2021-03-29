@@ -54,5 +54,48 @@ namespace WebApi.Controllers
             //cargo mi elemento json con el contenido de mi tb
             return new JsonResult(tb);
         }
+        [HttpPost]
+        public JsonResult Post(Employee emp)
+        {
+            //genero un string con la consulta hacia la BD
+            string Consulta = @"INSERT INTO [dbo].[EMPLOYEE]
+                                       ([EMPLOYEE_NAME]
+                                       ,[DEPARTAMENT]
+                                       ,[DATE_OF_JOINING]
+                                       ,[PHOTO_FILE])
+                                 VALUES
+                                       (@NOMBRE
+                                       ,@DEPARTAMENTO
+                                       ,@FECHADEINGRESO
+                                       ,@FOTO)";
+            //CREO UNA INSTANCIA NUEVA DE UN DATATABLE
+            DataTable tb = new DataTable();
+            //creo una variable reader para capturar los datos
+            SqlDataReader MyReader;
+            //TOMO LA CADENA CONEXXION QUE SE UBICA EN APPSETINGS.JSON
+            string sqlDataSource = _configuration.GetConnectionString("EmployeeAppCon");
+
+
+            using (SqlConnection sqlcon = new SqlConnection(sqlDataSource))
+            {
+
+                sqlcon.Open();
+                using (SqlCommand myCommand = new SqlCommand(Consulta, sqlcon))
+                {
+                    myCommand.Parameters.AddWithValue("@NOMBRE", emp.Employee_Name);
+                    myCommand.Parameters.AddWithValue("@DEPARTAMENTO", emp.Departament);
+                    myCommand.Parameters.AddWithValue("@FECHADEINGRESO", emp.DateOfJoining);
+                    myCommand.Parameters.AddWithValue("@FOTO", emp.Photo_File_Name);
+                    MyReader = myCommand.ExecuteReader();
+                    //la tabla la cargo con los datos obtenidos de mi sentencia
+                    tb.Load(MyReader);
+                    //cierro las conexiones
+                    MyReader.Close();
+                    sqlcon.Close();
+                }
+            }
+            //cargo mi elemento json con el contenido de mi tb
+            return new JsonResult("Added Succesfully");
+        }
     }
 }
