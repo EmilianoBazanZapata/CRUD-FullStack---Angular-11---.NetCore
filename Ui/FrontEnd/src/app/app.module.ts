@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import {  HttpClientModule } from '@angular/common/http';
+import { FormsModule , ReactiveFormsModule} from '@angular/forms'; 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DepartamentComponent } from './Components/departament/departament.component';
@@ -9,6 +12,7 @@ import { AddEditComponent } from './Components/Departament/add-edit/add-edit.com
 import { EmployeeComponent } from './Components/employee/employee.component';
 import { ShowEmpComponent } from './Components/Employee/show-emp/show-emp.component';
 import { AddEditEmpComponent } from './Components/Employee/add-edit-emp/add-edit-emp.component';
+import {SharedService} from './Services/shared.service';
 
 @NgModule({
   declarations: [
@@ -19,12 +23,16 @@ import { AddEditEmpComponent } from './Components/Employee/add-edit-emp/add-edit
     EmployeeComponent,
     ShowEmpComponent,
     AddEditEmpComponent
+    
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule ,
+    ReactiveFormsModule
   ],
-  providers: [],
+    providers: [SharedService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
