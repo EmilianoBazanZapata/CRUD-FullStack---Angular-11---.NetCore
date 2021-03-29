@@ -9,6 +9,9 @@ using Microsoft.Extensions.Configuration;
 using System.Data.SqlClient;
 using System.Data;
 using WebApi.Models;
+//agregamos otro using para poder trabajar con fotos 
+using System.IO;
+using Microsoft.AspNetCore.Hosting;
 
 namespace WebApi.Controllers
 {
@@ -16,11 +19,15 @@ namespace WebApi.Controllers
     [ApiController]
     public class EmployeeController : ControllerBase
     {
+        //manejo empleados 
         private readonly IConfiguration _configuration;
+        //manejo fotos
+        private readonly IWebHostEnvironment _env;
 
-        public EmployeeController(IConfiguration configuration)
+        public EmployeeController(IConfiguration configuration , IWebHostEnvironment env)
         {
             _configuration = configuration;
+            _env = env;
         }
 
         [HttpGet]
@@ -135,6 +142,29 @@ namespace WebApi.Controllers
             }
             //cargo mi elemento json con el contenido de mi tb
             return new JsonResult("Updated Succesfully");
+        }
+
+
+        [Route("SaveFile")]
+        [HttpPost]
+        public JsonResult SaveFile() 
+        {
+            try
+            {
+                var HttpRequest = Request.Form;
+                var PostedFile = HttpRequest.Files[0];
+                string FileName = PostedFile.FileName;
+                var PhysicalPath = _env.ContentRootPath + "/Photos/" + FileName;
+                using (var stream = new FileStream(PhysicalPath,FileMode.Create)) 
+                {
+                    PostedFile.CopyTo(stream);
+                }
+                return new JsonResult(FileName);
+            }
+            catch (Exception)
+            {
+                return new JsonResult("anonymous.png");
+            }
         }
     }
 }
