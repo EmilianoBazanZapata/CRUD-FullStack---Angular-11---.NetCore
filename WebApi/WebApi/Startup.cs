@@ -14,6 +14,11 @@ using System.Threading.Tasks;
 //importamos el using 1.D
 using Newtonsoft.Json.Serialization;
 
+//importamos el using para poder agregar imagenes 1.B
+using System.IO;
+//importamos otro using para poder agregar imagenes 1.C
+using Microsoft.Extensions.FileProviders;
+
 
 namespace WebApi
 {
@@ -68,6 +73,15 @@ namespace WebApi
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+
+            //codigo para poder agregar imagenes 1.A
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                //direccion en donde vamos a tener las imagenes
+                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "Photos")),
+                //direccion ded las fotos (si no me equivoco en la web)
+                RequestPath = "/Photos"
             });
         }
     }
