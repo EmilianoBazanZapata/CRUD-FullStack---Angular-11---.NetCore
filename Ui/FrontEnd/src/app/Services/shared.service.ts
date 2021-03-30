@@ -18,6 +18,10 @@ export class SharedService {
   {
     return this.http.get<any>(this.ApiUrl + '/Departament');
   }
-  
+  //metodo para agregar un departamento
+  AddDepartament(val:any)
+  {
+    return  this.http.post(this.ApiUrl +'/Departament',val);
+  }
 
 }
