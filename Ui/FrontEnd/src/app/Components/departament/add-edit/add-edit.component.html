@@ -1,1 +1,12 @@
-<p>add-edit works!</p>
+<div class="form-group row">
+    <label class="col-sm-5 col-form-label" style="margin-right: 3px;">Departament Name</label>
+    <div class="col-sm-6">
+        <input type="text" class="form-control" [(ngModel)]="departament_Name" placeholder="Enter Departament Name">
+    </div>
+</div>
+<button class="btn btn-success" *ngIf="dep.deparament_Id ==0">
+    Add
+</button>
+<button class="btn btn-primary" *ngIf="dep.deparament_Id !=0">
+    Update
+</button>
