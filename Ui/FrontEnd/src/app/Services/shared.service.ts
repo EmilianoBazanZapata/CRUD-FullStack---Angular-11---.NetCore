@@ -13,6 +13,7 @@ export class SharedService {
   {
 
   }
+  //metodos para trabajar con DEPARTAMENTOS
   //obtener el listado de departamentos
   GetDepList():Observable<any[]>
   {
@@ -32,6 +33,14 @@ export class SharedService {
   DeleteDepartament(val:any)
   {
     return  this.http.delete(this.ApiUrl +'/Departament/' + val);
+  }
+
+  //metodos para trabajar con EMPLEADOS
+  
+  //obtener el listado de empleados
+  GetEmpList():Observable<any[]>
+  {
+    return this.http.get<any>(this.ApiUrl + '/Employee');
   }
 
 }
