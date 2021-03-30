@@ -1,1 +1,19 @@
-<p>show-dep works!</p>
+<div class="container" style="text-align: center;">
+    <table class="table" style="text-align: center;">
+        <thead class="table-dark table-dark-block" style="text-align: center;">
+            <tr style="text-align: center;">
+                <th scope="col">Departament Name</th>
+                <th scope="col">Options</th>
+            </tr>
+        </thead>
+        <tbody style="text-align: center;">
+            <tr *ngFor=" let departament of DepartamentList;">
+                <td>{{departament.DEPARTAMENT_NAME}}</td>
+                <td>
+                    <button class="btn btn-outline-warning" style="margin-right: 5px;">Edit</button>
+                    <button class="btn btn-outline-danger">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
