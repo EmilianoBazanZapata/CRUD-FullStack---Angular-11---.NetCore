@@ -7,7 +7,7 @@ const routes: Routes = [
   {path:'Employee', component:EmployeeComponent},
   {path:'Departament',component:DepartamentComponent},
   {path:'',component:DepartamentComponent},
-  {path:'**',component:DepartamentComponent}
+  {path:'**',redirectTo:'Employee', pathMatch:'full'}
 ];
 
 @NgModule({
