@@ -48,4 +48,10 @@ export class SharedService {
   DeleteEmployee(val: any) {
     return this.http.delete(this.ApiUrl + '/Employee/' + val);
   }
+
+  //metodo para subir una foto 
+  UploadPhoto(val:any)
+  {
+    return this.http.post(this.ApiUrl + '/Employee/SaveFile' , val);
+  }
 }
