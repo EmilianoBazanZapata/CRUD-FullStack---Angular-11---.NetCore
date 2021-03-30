@@ -42,5 +42,9 @@ export class SharedService {
   {
     return this.http.get<any>(this.ApiUrl + '/Employee');
   }
-
+  //metodo para agregar un empleados
+  AddEmployee(val:any)
+  {
+    return  this.http.post(this.ApiUrl +'/Employee',val);
+  }
 }
