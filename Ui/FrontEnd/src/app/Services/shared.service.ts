@@ -28,5 +28,10 @@ export class SharedService {
    {
      return  this.http.put(this.ApiUrl +'/Departament',val);
    }
+    //metodo para eliminar un departamento
+  DeleteDepartament(val:any)
+  {
+    return  this.http.delete(this.ApiUrl +'/Departament/' + val);
+  }
 
 }
