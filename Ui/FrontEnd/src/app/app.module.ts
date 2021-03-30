@@ -12,7 +12,8 @@ import { AddEditComponent } from './Components/Departament/add-edit/add-edit.com
 import { EmployeeComponent } from './Components/employee/employee.component';
 import { ShowEmpComponent } from './Components/Employee/show-emp/show-emp.component';
 import { AddEditEmpComponent } from './Components/Employee/add-edit-emp/add-edit-emp.component';
-import {SharedService} from './Services/shared.service';
+import { SharedService} from './Services/shared.service';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import {SharedService} from './Services/shared.service';
     AppRoutingModule,
     HttpClientModule,
     FormsModule ,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ModalModule.forRoot()
   ],
     providers: [SharedService],
   bootstrap: [AppComponent]
