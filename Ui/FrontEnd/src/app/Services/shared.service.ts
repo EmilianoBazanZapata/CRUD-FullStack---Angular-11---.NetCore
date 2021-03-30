@@ -54,4 +54,9 @@ export class SharedService {
   {
     return this.http.post(this.ApiUrl + '/Employee/SaveFile' , val);
   }
+  //metodo para devolver los departamentos dentro de employee
+  GetAllDepartamentNames():Observable<any[]>
+  {
+    return this.http.get<any>(this.ApiUrl+ '/Employee/GetAllDepartamentsNames');
+  }
 }
