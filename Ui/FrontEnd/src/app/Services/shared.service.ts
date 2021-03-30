@@ -23,5 +23,10 @@ export class SharedService {
   {
     return  this.http.post(this.ApiUrl +'/Departament',val);
   }
+   //metodo para actualizar un departamento
+   UpdateDepartament(val:any)
+   {
+     return  this.http.put(this.ApiUrl +'/Departament',val);
+   }
 
 }
