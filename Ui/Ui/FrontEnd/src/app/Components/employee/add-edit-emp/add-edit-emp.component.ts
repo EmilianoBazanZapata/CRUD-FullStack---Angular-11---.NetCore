@@ -44,5 +44,25 @@ export class AddEditEmpComponent implements OnInit {
       DATE_OF_JOINING: this.DateOfJoining,
       PHOTO_FILE: this.PhotoFileName
     }
+    this._SharedService.AddEmployee(val).subscribe(data =>
+      {
+        alert(data.toString())
+      });
+  }
+  //metodo para actualizar un empleado
+  UpdateEmployee()
+  {
+    var val =
+    {
+      EMPLOYEE_ID: this.EmployeeId,
+      EMPLOYEE_NAME: this.EmployeeName,
+      DEPARTAMENT: this.Departament,
+      DATE_OF_JOINING: this.DateOfJoining,
+      PHOTO_FILE: this.PhotoFileName
+    }
+    this._SharedService.UpdateEmployee(val.EMPLOYEE_ID).subscribe(data =>
+      {
+        alert(data.toString())
+      });
   }
 }
