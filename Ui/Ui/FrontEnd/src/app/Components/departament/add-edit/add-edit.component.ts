@@ -1,6 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output ,EventEmitter } from '@angular/core';
 import { SharedService } from '../../../Services/shared.service';
-import { ShowDepComponent } from '../show-dep/show-dep.component';
 
 @Component({
   selector: 'app-add-edit',
@@ -12,9 +11,8 @@ export class AddEditComponent implements OnInit {
   @Input() dep: any;
   deparament_Id: string;
   departament_Name: string;
-  DepartamentList: any = [];
-  constructor(private _SharedService: SharedService,
-              private ShowDep:ShowDepComponent)
+  @Output() Actualizar = new EventEmitter<boolean>();
+  constructor(private _SharedService: SharedService)
   {
 
   }
@@ -33,7 +31,6 @@ export class AddEditComponent implements OnInit {
     this._SharedService.AddDepartament(val).subscribe(data =>
       {
         alert(data.toString());
-        this.ShowDep.ngOnInit();
       });
   }
   UpdateDepartament() {
@@ -45,14 +42,8 @@ export class AddEditComponent implements OnInit {
     this._SharedService.UpdateDepartament(val).subscribe(data =>
       {
         alert(data.toString());
-        this.ShowDep.ngOnInit();
+        this.Actualizar.emit(true);
       });
       
-  }
-
-  RefreshDepList() {
-    this._SharedService.GetDepList().subscribe(data => {
-      this.DepartamentList = data;
-    })
   }
 }

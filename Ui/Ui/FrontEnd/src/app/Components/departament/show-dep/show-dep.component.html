@@ -10,7 +10,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="Close()"></button>
     </div>
     <div class=" modal-body ">
-        <app-add-edit [dep]="dep " *ngIf="ActivateAddEditDepComp "></app-add-edit>
+        <app-add-edit (Actualizar)="actualizar($event)" [dep]="dep " *ngIf="ActivateAddEditDepComp "></app-add-edit>
     </div>
 </ng-template>
 
@@ -27,7 +27,7 @@
             <tr *ngFor=" let departament of DepartamentList; ">
                 <td>{{departament.DEPARTAMENT_NAME}}</td>
                 <td>
-                    <button class="btn btn-outline-warning " style="margin-right: 3px;" (click)="EditClick(template,departament)" (click)="EditDep(departament)">Edit</button>
+                    <button class="btn btn-outline-warning " style="margin-right: 3px;" (click)="EditClick(template,departament)">Edit</button>
                     <button class="btn btn-outline-danger ">Delete</button>
                 </td>
             </tr>

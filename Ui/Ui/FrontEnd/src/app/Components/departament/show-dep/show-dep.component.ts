@@ -1,4 +1,4 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Component, Input, OnInit, TemplateRef } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { SharedService } from '../../../Services/shared.service';
 
@@ -8,6 +8,10 @@ import { SharedService } from '../../../Services/shared.service';
   styleUrls: ['./show-dep.component.css']
 })
 export class ShowDepComponent implements OnInit {
+
+
+  @Input() variable=false;
+
 
   DepartamentList: any = [];
   ModalTitle: string;
@@ -52,4 +56,11 @@ export class ShowDepComponent implements OnInit {
     }
   }
 
+  actualizar(val:boolean)
+  {
+    if(val === true)
+    {
+      this.RefreshDepList();
+    }
+  }
 }
