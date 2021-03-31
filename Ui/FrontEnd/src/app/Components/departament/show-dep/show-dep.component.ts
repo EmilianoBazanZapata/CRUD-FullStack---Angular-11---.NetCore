@@ -15,7 +15,7 @@ export class ShowDepComponent implements OnInit {
   dep: any;
   ModalRef: BsModalRef;
   constructor(private _SharedServise: SharedService,
-    private _ModalService: BsModalService) { }
+              private _ModalService: BsModalService) { }
 
 
   ngOnInit(): void {
