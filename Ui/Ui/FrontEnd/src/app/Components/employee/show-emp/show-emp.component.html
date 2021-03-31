@@ -1,1 +1,40 @@
-<p>show-emp works!</p>
+<form class="d-flex m-2">
+    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success" type="submit">Search</button>
+</form>
+<button type="button" class="btn btn-primary float-end m-2" (click)="OpenModal(template)">Add Employee</button>
+
+<ng-template #template>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">{{ModalTitle}}</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="Close()"></button>
+    </div>
+    <div class=" modal-body">
+        <app-add-edit-emp></app-add-edit-emp>
+    </div>
+</ng-template>
+
+
+<div class="container ">
+    <table class="table">
+        <thead class="table-dark table-dark-block ">
+            <tr style="text-align: center;">
+                <th scope="col ">Employee Name</th>
+                <th scope="col ">Deparament</th>
+                <th scope="col ">Date of Joining</th>
+                <th scope="col ">Options</th>
+            </tr>
+        </thead>
+        <tbody style="text-align: center;">
+            <tr *ngFor=" let Employee of EmployeeList; ">
+                <td>{{Employee.EMPLOYEE_NAME}}</td>
+                <td>{{Employee.DEPARTAMENT}}</td>
+                <td>{{Employee.DATE_OF_JOINING}}</td>
+                <td>
+                    <button class="btn btn-outline-warning " style="margin-right: 3px;" (click)="EditClick(template,Employee)">Edit</button>
+                    <button class="btn btn-outline-danger " (click)="DeleteDep(Employee.EMPLOYEE_ID)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
