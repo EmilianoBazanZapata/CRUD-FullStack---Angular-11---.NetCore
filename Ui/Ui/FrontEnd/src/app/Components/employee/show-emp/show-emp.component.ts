@@ -9,10 +9,10 @@ import { SharedService } from '../../../Services/shared.service';
 })
 export class ShowEmpComponent implements OnInit {
 
-  constructor(private _SharedService : SharedService,
-              private _ModalService: BsModalService) { }
+  constructor(private _SharedService: SharedService,
+    private _ModalService: BsModalService) { }
 
-  EmployeeList:any[];
+  EmployeeList: any[];
   ModalTitle: string;
   ActivateAddEditDepComp: boolean;
   emp: any;
@@ -21,56 +21,54 @@ export class ShowEmpComponent implements OnInit {
     this.RefreshEmpList();
   }
 
-  RefreshEmpList()
-  {
-    this._SharedService.GetEmpList().subscribe(data =>
-      {
-        this.EmployeeList = data;
-      });
+  RefreshEmpList() {
+    this._SharedService.GetEmpList().subscribe(data => {
+      this.EmployeeList = data;
+    });
   }
 
-    //abrir modal para agregar 
-    OpenModal(template: TemplateRef<any>) {
-      this.ActivateAddEditDepComp = true;
-      this.emp =
-      {
-        deparament_Id: 0,
-        departament_Name: ""
-      }
-      this.ModalTitle = "Add Departament"
-      this.ModalRef = this._ModalService.show(template);
-    }
-    //modal para editar
-    EditClick(template: TemplateRef<any>, item) {
-      this.ActivateAddEditDepComp = true;
-      this.emp = item;
-      this.ModalTitle = "Edit Departament"
-      this.ModalRef = this._ModalService.show(template);
-    }
-    //Elimino un Departamento
-    DeleteDep(val)
+  //abrir modal para agregar 
+  OpenModal(template: TemplateRef<any>) {
+    this.ActivateAddEditDepComp = true;
+    this.emp =
     {
-      if(confirm('Are you Sure ??'))
-      {
-        console.log(val);
-        this._SharedService.DeleteDepartament(val).subscribe(data =>
-          {
-            alert(data.toString());
-            this.RefreshEmpList();
-          })
-      }
+      EMPLOYEE_ID: 0,
+      EMPLOYEE_NAME: "",
+      DEPARTAMENT: "",
+      DATE_OF_JOINING: "",
+      PHOTO_FILE: "Anonimous.png"
     }
-    //actualizo el listado
-    actualizar(val: boolean) {
-      if (val === true) {
+    this.ModalTitle = "Add Departament"
+    this.ModalRef = this._ModalService.show(template);
+  }
+  //modal para editar
+  EditClick(template: TemplateRef<any>, item) {
+    this.ActivateAddEditDepComp = true;
+    this.emp = item;
+    this.ModalTitle = "Edit Departament"
+    this.ModalRef = this._ModalService.show(template);
+  }
+  //Elimino un Departamento
+  DeleteDep(val) {
+    if (confirm('Are you Sure ??')) {
+      console.log(val);
+      this._SharedService.DeleteEmployee(val).subscribe(data => {
+        alert(data.toString());
         this.RefreshEmpList();
-      }
+      })
     }
-    //cerrar modal
-    Close() {
-      if (this.ModalRef) {
-        this.ActivateAddEditDepComp = false;
-        this.ModalRef.hide();
-      }
+  }
+  //actualizo el listado
+  actualizar(val: boolean) {
+    if (val === true) {
+      this.RefreshEmpList();
     }
+  }
+  //cerrar modal
+  Close() {
+    if (this.ModalRef) {
+      this.ActivateAddEditDepComp = false;
+      this.ModalRef.hide();
+    }
+  }
 }
