@@ -4,9 +4,9 @@
         <input type="text" class="form-control" [(ngModel)]="departament_Name" placeholder="Enter Departament Name">
     </div>
 </div>
-<button class="btn btn-success" *ngIf="dep.deparament_Id ==0">
+<button class="btn btn-success" *ngIf="dep.deparament_Id ==0" (click)="AddDepartament()">
     Add
 </button>
-<button class="btn btn-primary" *ngIf="dep.deparament_Id !=0">
+<button class="btn btn-primary" *ngIf="dep.deparament_Id !=0" (click)="UpdateDepartament()">
     Update
 </button>

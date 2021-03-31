@@ -13,9 +13,9 @@ export class ShowDepComponent implements OnInit {
   ModalTitle: string;
   ActivateAddEditDepComp: boolean;
   dep: any;
-  ModalRef:BsModalRef;
+  ModalRef: BsModalRef;
   constructor(private _SharedServise: SharedService,
-              private _ModalService :BsModalService) { }
+    private _ModalService: BsModalService) { }
 
 
   ngOnInit(): void {
@@ -26,16 +26,30 @@ export class ShowDepComponent implements OnInit {
       this.DepartamentList = data;
     })
   }
+  //abrir modal para agregar 
   OpenModal(template: TemplateRef<any>) {
-    this.ActivateAddEditDepComp=true;
+    this.ActivateAddEditDepComp = true;
+    this.dep =
+    {
+      deparament_Id: 0,
+      departament_Name: ""
+    }
+    this.ModalTitle = "Add Departament"
     this.ModalRef = this._ModalService.show(template);
   }
-  Close()
-  {
+  //modal para editar
+  EditClick(template: TemplateRef<any>,item) {
+    this.ActivateAddEditDepComp = true;
+    this.dep = item;
+    this.ModalTitle = "Edit Departament"
+    this.ModalRef = this._ModalService.show(template);
+  }
+  //cerrar modal
+  Close() {
     if (this.ModalRef) {
-      this.ActivateAddEditDepComp=false;
+      this.ActivateAddEditDepComp = false;
       this.ModalRef.hide();
-   }
+    }
   }
 
 }

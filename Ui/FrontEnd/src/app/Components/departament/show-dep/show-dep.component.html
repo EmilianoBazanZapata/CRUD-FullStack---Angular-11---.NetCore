@@ -1,8 +1,12 @@
-<button type="button" class="btn btn-primary" (click)="OpenModal(template)">Ver Modal</button>
+<form class="d-flex m-2">
+    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success" type="submit">Search</button>
+</form>
+<button type="button" class="btn btn-primary float-end m-2" (click)="OpenModal(template)">Add Departament</button>
 
 <ng-template #template>
     <div class="modal-header">
-        <h4 class="modal-title pull-left">Modal</h4>
+        <h4 class="modal-title pull-left">{{ModalTitle}}</h4>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="Close()"></button>
     </div>
     <div class=" modal-body ">
@@ -11,19 +15,19 @@
 </ng-template>
 
 
-<div class="container " style="text-align: center; ">
-    <table class="table " style="text-align: center; ">
-        <thead class="table-dark table-dark-block " style="text-align: center; ">
-            <tr style="text-align: center; ">
+<div class="container ">
+    <table class="table">
+        <thead class="table-dark table-dark-block ">
+            <tr style="text-align: center;">
                 <th scope="col ">Departament Name</th>
                 <th scope="col ">Options</th>
             </tr>
         </thead>
-        <tbody style="text-align: center; ">
+        <tbody style="text-align: center;">
             <tr *ngFor=" let departament of DepartamentList; ">
                 <td>{{departament.DEPARTAMENT_NAME}}</td>
                 <td>
-                    <button class="btn btn-outline-warning " style="margin-right: 5px; ">Edit</button>
+                    <button class="btn btn-outline-warning " style="margin-right: 3px;" (click)="EditClick(template,departament)" (click)="EditDep(departament)">Edit</button>
                     <button class="btn btn-outline-danger ">Delete</button>
                 </td>
             </tr>
