@@ -28,7 +28,7 @@
                 <td>{{departament.DEPARTAMENT_NAME}}</td>
                 <td>
                     <button class="btn btn-outline-warning " style="margin-right: 3px;" (click)="EditClick(template,departament)">Edit</button>
-                    <button class="btn btn-outline-danger ">Delete</button>
+                    <button class="btn btn-outline-danger " (click)="DeleteDep(departament.DEPARTAMENT_ID)">Delete</button>
                 </td>
             </tr>
         </tbody>

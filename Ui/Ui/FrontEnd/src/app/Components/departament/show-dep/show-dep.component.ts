@@ -10,7 +10,7 @@ import { SharedService } from '../../../Services/shared.service';
 export class ShowDepComponent implements OnInit {
 
 
-  @Input() variable=false;
+  @Input() variable = false;
 
 
   DepartamentList: any = [];
@@ -19,7 +19,7 @@ export class ShowDepComponent implements OnInit {
   dep: any;
   ModalRef: BsModalRef;
   constructor(private _SharedServise: SharedService,
-              private _ModalService: BsModalService) { }
+    private _ModalService: BsModalService) { }
 
 
   ngOnInit(): void {
@@ -42,11 +42,30 @@ export class ShowDepComponent implements OnInit {
     this.ModalRef = this._ModalService.show(template);
   }
   //modal para editar
-  EditClick(template: TemplateRef<any>,item) {
+  EditClick(template: TemplateRef<any>, item) {
     this.ActivateAddEditDepComp = true;
     this.dep = item;
     this.ModalTitle = "Edit Departament"
     this.ModalRef = this._ModalService.show(template);
+  }
+  //Elimino un Departamento
+  DeleteDep(val)
+  {
+    if(confirm('Are you Sure ??'))
+    {
+      console.log(val);
+      this._SharedServise.DeleteDepartament(val).subscribe(data =>
+        {
+          alert(data.toString());
+          this.RefreshDepList();
+        })
+    }
+  }
+  //actualizo el listado
+  actualizar(val: boolean) {
+    if (val === true) {
+      this.RefreshDepList();
+    }
   }
   //cerrar modal
   Close() {
@@ -55,12 +74,5 @@ export class ShowDepComponent implements OnInit {
       this.ModalRef.hide();
     }
   }
-
-  actualizar(val:boolean)
-  {
-    if(val === true)
-    {
-      this.RefreshDepList();
-    }
-  }
+  
 }

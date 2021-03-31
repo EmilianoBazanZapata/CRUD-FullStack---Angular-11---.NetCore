@@ -121,7 +121,7 @@ namespace WebApi.Controllers
         }
 
         [HttpDelete("{id}")]
-        public JsonResult Delete(Departament dep)
+        public JsonResult Delete(int id)
         {
             //genero un string con la consulta hacia la BD
             string Consulta = @"DELETE FROM [dbo].[DEPARTAMENT]
@@ -140,7 +140,7 @@ namespace WebApi.Controllers
                 sqlcon.Open();
                 using (SqlCommand myCommand = new SqlCommand(Consulta, sqlcon))
                 {
-                    myCommand.Parameters.AddWithValue("@ID", dep.Deparament_Id);
+                    myCommand.Parameters.AddWithValue("@ID", id);
                     MyReader = myCommand.ExecuteReader();
                     //la tabla la cargo con los datos obtenidos de mi sentencia
                     tb.Load(MyReader);
