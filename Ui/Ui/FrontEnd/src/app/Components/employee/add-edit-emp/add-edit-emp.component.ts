@@ -65,4 +65,19 @@ export class AddEditEmpComponent implements OnInit {
         alert(data.toString())
       });
   }
+
+  //motodo para subir una foto
+  UploadPhoto(event)
+  {
+    var file = event.target.files[0];
+    const formData:FormData = new FormData();
+    formData.append('uploadedFile',file,file.name);
+
+    this._SharedService.UploadPhoto(formData).subscribe((data:any)=>
+      {
+        this.PhotoFileName  = data.toString();
+        this.PhotoFilePath = this._SharedService.PhotoUrl + this.PhotoFileName;
+
+      })
+  }
 }
