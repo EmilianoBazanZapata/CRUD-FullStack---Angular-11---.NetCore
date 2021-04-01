@@ -36,16 +36,16 @@ export class ShowEmpComponent implements OnInit {
       EMPLOYEE_NAME: "",
       DEPARTAMENT: "",
       DATE_OF_JOINING: "",
-      PHOTO_FILE: "Anonimous.png"
+      PHOTO_FILE: "Anonymous.png"
     }
-    this.ModalTitle = "Add Departament"
+    this.ModalTitle = "Add Employee"
     this.ModalRef = this._ModalService.show(template);
   }
   //modal para editar
   EditClick(template: TemplateRef<any>, item) {
     this.ActivateAddEditDepComp = true;
     this.emp = item;
-    this.ModalTitle = "Edit Departament"
+    this.ModalTitle = "Edit Employee"
     this.ModalRef = this._ModalService.show(template);
   }
   //Elimino un Departamento

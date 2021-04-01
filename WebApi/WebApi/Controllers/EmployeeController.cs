@@ -144,8 +144,8 @@ namespace WebApi.Controllers
             //cargo mi elemento json con el contenido de mi tb
             return new JsonResult("Updated Succesfully");
         }
-        [HttpDelete]
-        public JsonResult Delete(Employee emp)
+        [HttpDelete("{id}")]
+        public JsonResult Delete(int id)
         {
             //genero un string con la consulta hacia la BD
             string Consulta = @"DELETE FROM [dbo].[EMPLOYEE]
@@ -163,7 +163,7 @@ namespace WebApi.Controllers
                 sqlcon.Open();
                 using (SqlCommand myCommand = new SqlCommand(Consulta, sqlcon))
                 {
-                    myCommand.Parameters.AddWithValue("@ID", emp.EmployeeId);
+                    myCommand.Parameters.AddWithValue("@ID", id);
                     MyReader = myCommand.ExecuteReader();
                     //la tabla la cargo con los datos obtenidos de mi sentencia
                     tb.Load(MyReader);
@@ -194,7 +194,7 @@ namespace WebApi.Controllers
             }
             catch (Exception)
             {
-                return new JsonResult("anonymous.png");
+                return new JsonResult("Anonymous.png");
             }
         }
 
