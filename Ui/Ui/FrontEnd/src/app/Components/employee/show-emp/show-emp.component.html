@@ -1,8 +1,11 @@
 <form class="d-flex m-2">
-    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-    <button class="btn btn-outline-success" type="submit">Search</button>
+    <input class="form-control me-2" type="search" placeholder="Search Employee" aria-label="Search" [(ngModel)]="EmployeeSearch" name="first">
+
+    <button class="btn btn-outline-success" style="margin-right: 6px;" type="submit" (click)="EmpListSearch()">Search</button>
+
+    <button class="btn btn-outline-success" type="submit" (click)="EmpListSearch()">GetAll</button>
 </form>
-<button type="button" class="btn btn-primary float-end m-2" (click)="OpenModal(template)">Add Employee</button>
+<button type="button" class="btn btn-primary float-end m-2" (click)="RefreshEmpList()">Add Employee</button>
 
 <ng-template #template>
     <div class="modal-header">

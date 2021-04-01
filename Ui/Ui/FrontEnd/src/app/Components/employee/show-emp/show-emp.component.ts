@@ -17,6 +17,7 @@ export class ShowEmpComponent implements OnInit {
   ActivateAddEditDepComp: boolean;
   emp: any;
   ModalRef: BsModalRef;
+  EmployeeSearch =  '';
   ngOnInit(): void {
     this.RefreshEmpList();
   }
@@ -25,6 +26,20 @@ export class ShowEmpComponent implements OnInit {
     this._SharedService.GetEmpList().subscribe(data => {
       this.EmployeeList = data;
     });
+  }
+
+  EmpListSearch()
+  {
+    var val = 
+    {
+      employee_Name : this.EmployeeSearch
+    }
+    console.log(val);
+    this._SharedService.SearchEmplyee(this.EmployeeSearch).subscribe(data=>
+      {
+        this.EmployeeList = data;
+      })
+      this.EmployeeSearch = '';
   }
 
   //abrir modal para agregar 

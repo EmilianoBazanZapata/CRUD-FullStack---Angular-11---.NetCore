@@ -48,6 +48,11 @@ export class SharedService {
   DeleteEmployee(val: any) {
     return this.http.delete(this.ApiUrl + '/Employee/' + val);
   }
+  //metodo para buscar empleados
+  SearchEmplyee(val :any): Observable<any[]>
+  {
+    return this.http.get<any>(this.ApiUrl + '/Employee/' + val);
+  }
 
   //metodo para subir una foto 
   UploadPhoto(val:any)
