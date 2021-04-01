@@ -152,6 +152,40 @@ namespace WebApi.Controllers
             //cargo mi elemento json con el contenido de mi tb
             return new JsonResult("Deleted Succesfully");
         }
+        [HttpGet("{date}")]
+        //metodo para seleccionar los departamentos
+        public JsonResult GetDepartament(string date)
+        {
+            //genero un string con la consulta hacia la BD
+            string Consulta = @"Select * From DEPARTAMENT D 
+                                where((D.DEPARTAMENT_NAME Like '%' + @DEPARTAMENTO + '%')
+                                or(@DEPARTAMENTO is null))";
+            //CREO UNA INSTANCIA NUEVA DE UN DATATABLE
+            DataTable tb = new DataTable();
+            //creo una variable reader para capturar los datos
+            SqlDataReader MyReader;
+            //TOMO LA CADENA CONEXXION QUE SE UBICA EN APPSETINGS.JSON
+            string sqlDataSource = _configuration.GetConnectionString("EmployeeAppCon");
+
+
+            using (SqlConnection sqlcon = new SqlConnection(sqlDataSource))
+            {
+
+                sqlcon.Open();
+                using (SqlCommand myCommand = new SqlCommand(Consulta, sqlcon))
+                {
+                    myCommand.Parameters.AddWithValue("@DEPARTAMENTO", date);
+                    MyReader = myCommand.ExecuteReader();
+                    //la tabla la cargo con los datos obtenidos de mi select 
+                    tb.Load(MyReader);
+                    //cierro las conexiones
+                    MyReader.Close();
+                    sqlcon.Close();
+                }
+            }
+            //cargo mi elemento json con el contenido de mi tb
+            return new JsonResult(tb);
+        }
 
     }
 }

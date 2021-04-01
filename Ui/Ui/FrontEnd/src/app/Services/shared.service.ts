@@ -29,6 +29,10 @@ export class SharedService {
   DeleteDepartament(val: any) {
     return this.http.delete(this.ApiUrl + '/Departament/' + val);
   }
+  //metodo para buscar departamentos
+  SearchDepartament(val: any): Observable<any[]> {
+    return this.http.get<any>(this.ApiUrl + '/Departament/' + val);
+  }
 
   //metodos para trabajar con EMPLEADOS
 
@@ -49,19 +53,16 @@ export class SharedService {
     return this.http.delete(this.ApiUrl + '/Employee/' + val);
   }
   //metodo para buscar empleados
-  SearchEmplyee(val :any): Observable<any[]>
-  {
+  SearchEmplyee(val: any): Observable<any[]> {
     return this.http.get<any>(this.ApiUrl + '/Employee/' + val);
   }
 
   //metodo para subir una foto 
-  UploadPhoto(val:any)
-  {
-    return this.http.post(this.ApiUrl + '/Employee/SaveFile' , val);
+  UploadPhoto(val: any) {
+    return this.http.post(this.ApiUrl + '/Employee/SaveFile', val);
   }
   //metodo para devolver los departamentos dentro de employee
-  GetAllDepartamentNames():Observable<any[]>
-  {
-    return this.http.get<any>(this.ApiUrl+ '/Employee/GetAllDepartamentsNames');
+  GetAllDepartamentNames(): Observable<any[]> {
+    return this.http.get<any>(this.ApiUrl + '/Employee/GetAllDepartamentsNames');
   }
 }

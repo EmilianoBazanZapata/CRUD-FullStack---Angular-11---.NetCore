@@ -18,6 +18,7 @@ export class ShowDepComponent implements OnInit {
   ActivateAddEditDepComp: boolean;
   dep: any;
   ModalRef: BsModalRef;
+  DepartamentSearch = '';
   constructor(private _SharedServise: SharedService,
     private _ModalService: BsModalService) { }
 
@@ -29,6 +30,13 @@ export class ShowDepComponent implements OnInit {
     this._SharedServise.GetDepList().subscribe(data => {
       this.DepartamentList = data;
     })
+  }
+  SearchDepartament()
+  {
+    this._SharedServise.SearchDepartament(this.DepartamentSearch).subscribe(data => {
+      this.DepartamentList = data;
+    })
+    this.DepartamentSearch='';
   }
   //abrir modal para agregar 
   OpenModal(template: TemplateRef<any>) {
