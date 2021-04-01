@@ -24,7 +24,7 @@
             <img [src]=PhotoFilePath height="250px" width="200px">
             <input type="file" (change)="UploadPhoto($event)" class="mt-2">
         </div>
-        <button class="btn btn-success btn-block mt-3" *ngIf="emp.EMPLOYEE_ID == 0">Add</button>
-        <button class="btn btn-primary btn-block mt-3" *ngIf="emp.EMPLOYEE_ID != 0">Update</button>
+        <button class="btn btn-success btn-block mt-3" *ngIf="emp.EMPLOYEE_ID == 0" (click)="AddEmployee()">Add</button>
+        <button class="btn btn-primary btn-block mt-3" *ngIf="emp.EMPLOYEE_ID != 0" (click)="UpdateEmployee()">Update</button>
     </div>
 </div>

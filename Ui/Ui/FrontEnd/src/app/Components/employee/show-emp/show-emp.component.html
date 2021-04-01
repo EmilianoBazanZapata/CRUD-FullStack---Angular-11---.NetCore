@@ -10,7 +10,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="Close()"></button>
     </div>
     <div class=" modal-body">
-        <app-add-edit-emp [emp]="emp"></app-add-edit-emp>
+        <app-add-edit-emp (Actualizar)="actualizar($event)" [emp]="emp"></app-add-edit-emp>
     </div>
 </ng-template>
 

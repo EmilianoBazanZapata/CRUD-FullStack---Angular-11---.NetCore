@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit , Output ,EventEmitter} from '@angular/core';
 import { SharedService } from '../../../Services/shared.service';
 
 @Component({
@@ -16,6 +16,7 @@ export class AddEditEmpComponent implements OnInit {
   PhotoFileName: string;
   PhotoFilePath: string;
   DepartamentList: any = [];
+  @Output() Actualizar = new EventEmitter<boolean>();
 
   constructor(private _SharedService: SharedService) { }
 
@@ -38,15 +39,16 @@ export class AddEditEmpComponent implements OnInit {
   AddEmployee() {
     var val =
     {
-      EMPLOYEE_ID: this.EmployeeId,
-      EMPLOYEE_NAME: this.EmployeeName,
-      DEPARTAMENT: this.Departament,
-      DATE_OF_JOINING: this.DateOfJoining,
-      PHOTO_FILE: this.PhotoFileName
+      employeeId: this.EmployeeId,
+      employee_Name: this.EmployeeName,
+      dateOfJoining: this.DateOfJoining,
+      departament: this.Departament,
+      photo_File_Name: this.PhotoFileName
     }
     this._SharedService.AddEmployee(val).subscribe(data =>
       {
         alert(data.toString())
+        this.Actualizar.emit(true);
       });
   }
   //metodo para actualizar un empleado
@@ -54,15 +56,16 @@ export class AddEditEmpComponent implements OnInit {
   {
     var val =
     {
-      EMPLOYEE_ID: this.EmployeeId,
-      EMPLOYEE_NAME: this.EmployeeName,
-      DEPARTAMENT: this.Departament,
-      DATE_OF_JOINING: this.DateOfJoining,
-      PHOTO_FILE: this.PhotoFileName
+      employeeId: this.EmployeeId,
+      employee_Name: this.EmployeeName,
+      dateOfJoining: this.DateOfJoining,
+      departament: this.Departament,
+      photo_File_Name: this.PhotoFileName
     }
-    this._SharedService.UpdateEmployee(val.EMPLOYEE_ID).subscribe(data =>
+    this._SharedService.UpdateEmployee(val).subscribe(data =>
       {
         alert(data.toString())
+        this.Actualizar.emit(true);
       });
   }
 
