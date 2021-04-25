@@ -185,7 +185,7 @@ namespace WebApi.Controllers
                 var HttpRequest = Request.Form;
                 var PostedFile = HttpRequest.Files[0];
                 string FileName = PostedFile.FileName;
-                var PhysicalPath = _env.ContentRootPath + "/Photos/" + FileName;
+                var PhysicalPath = "wwwroot/Images/" + FileName;
                 using (var stream = new FileStream(PhysicalPath,FileMode.Create)) 
                 {
                     PostedFile.CopyTo(stream);

@@ -54,6 +54,18 @@ namespace WebApi
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseStaticFiles();
+
+            app.UseDirectoryBrowser(new DirectoryBrowserOptions
+            {
+                FileProvider = new PhysicalFileProvider
+            (
+                Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Images")
+            ),
+                RequestPath = "/Images"
+            });
+
+
             //Activando CORS 1.B
             app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
@@ -63,6 +75,8 @@ namespace WebApi
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebApi v1"));
             }
+
+            
 
             app.UseHttpsRedirection();
 
@@ -75,14 +89,12 @@ namespace WebApi
                 endpoints.MapControllers();
             });
 
-            //codigo para poder agregar imagenes 1.A
-            app.UseStaticFiles(new StaticFileOptions
-            {
-                //direccion en donde vamos a tener las imagenes
-                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "Photos")),
-                //direccion ded las fotos (si no me equivoco en la web)
-                RequestPath = "/Photos"
-            });
+            ////codigo para poder agregar imagenes 1.A
+            //app.UseStaticFiles(new StaticFileOptions
+            //{
+            //    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "Photos")),
+            //    RequestPath = "/Photos"
+            //});
         }
     }
 }

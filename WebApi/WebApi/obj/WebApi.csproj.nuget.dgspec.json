@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\maxim\\Desktop\\Cursos\\Crud Angular 11\\CRUD Angular 11\\WebApi\\WebApi\\WebApi.csproj": {}
+    "C:\\Users\\maxim\\Downloads\\CRUD Angular 11\\WebApi\\WebApi\\WebApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\maxim\\Desktop\\Cursos\\Crud Angular 11\\CRUD Angular 11\\WebApi\\WebApi\\WebApi.csproj": {
+    "C:\\Users\\maxim\\Downloads\\CRUD Angular 11\\WebApi\\WebApi\\WebApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\maxim\\Desktop\\Cursos\\Crud Angular 11\\CRUD Angular 11\\WebApi\\WebApi\\WebApi.csproj",
+        "projectUniqueName": "C:\\Users\\maxim\\Downloads\\CRUD Angular 11\\WebApi\\WebApi\\WebApi.csproj",
         "projectName": "WebApi",
-        "projectPath": "C:\\Users\\maxim\\Desktop\\Cursos\\Crud Angular 11\\CRUD Angular 11\\WebApi\\WebApi\\WebApi.csproj",
+        "projectPath": "C:\\Users\\maxim\\Downloads\\CRUD Angular 11\\WebApi\\WebApi\\WebApi.csproj",
         "packagesPath": "C:\\Users\\maxim\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\maxim\\Desktop\\Cursos\\Crud Angular 11\\CRUD Angular 11\\WebApi\\WebApi\\obj\\",
+        "outputPath": "C:\\Users\\maxim\\Downloads\\CRUD Angular 11\\WebApi\\WebApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\maxim\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,6 +40,10 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Http.Features": {
+              "target": "Package",
+              "version": "[5.0.5, )"
+            },
             "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
               "target": "Package",
               "version": "[5.0.4, )"
